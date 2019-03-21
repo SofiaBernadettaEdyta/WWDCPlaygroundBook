@@ -6,7 +6,8 @@
 	<string>ChapterOneName</string>
 	<key>Pages</key>
 	<array>
-		<string>PlaygroundPage.playgroundpage</string>
+		<string>BalerinaPage.playgroundpage</string>
+		<string>XmasTreePage.playgroundpage</string>
 	</array>
 </dict>
 </plist>
