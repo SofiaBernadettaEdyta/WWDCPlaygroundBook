@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		231122C222439F8E00497E01 /* XmasTreePageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 231122C122439F8D00497E01 /* XmasTreePageViewController.swift */; };
 		231122C42243A20B00497E01 /* BalerinaPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 231122C32243A20B00497E01 /* BalerinaPageViewController.swift */; };
+		231122C72243B4A500497E01 /* balerina1.png in Resources */ = {isa = PBXBuildFile; fileRef = 231122C52243B4A500497E01 /* balerina1.png */; };
+		231122C82243B4A500497E01 /* balerina0.png in Resources */ = {isa = PBXBuildFile; fileRef = 231122C62243B4A500497E01 /* balerina0.png */; };
 		5E086DCA2051DDAE004D8D25 /* LiveView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5E086DCC2051DDAE004D8D25 /* LiveView.storyboard */; };
 		5E086DD32051E3A3004D8D25 /* Manifest.plist in Copy Book Contents */ = {isa = PBXBuildFile; fileRef = 5E086DCF2051DF0F004D8D25 /* Manifest.plist */; };
 		5E3196F32061DEA40077BBD7 /* LiveViewSupport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E3196F22061DEA40077BBD7 /* LiveViewSupport.swift */; };
@@ -94,6 +96,8 @@
 /* Begin PBXFileReference section */
 		231122C122439F8D00497E01 /* XmasTreePageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XmasTreePageViewController.swift; sourceTree = "<group>"; };
 		231122C32243A20B00497E01 /* BalerinaPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BalerinaPageViewController.swift; sourceTree = "<group>"; };
+		231122C52243B4A500497E01 /* balerina1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = balerina1.png; sourceTree = "<group>"; };
+		231122C62243B4A500497E01 /* balerina0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = balerina0.png; sourceTree = "<group>"; };
 		5E086DC02051C5A7004D8D25 /* PlaygroundBook.playgroundbook */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PlaygroundBook.playgroundbook; sourceTree = BUILT_PRODUCTS_DIR; };
 		5E086DC72051DD03004D8D25 /* BookOverridingBuildSettings.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = BookOverridingBuildSettings.xcconfig; sourceTree = "<group>"; };
 		5E086DCD2051DDB8004D8D25 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LiveView.storyboard; sourceTree = "<group>"; };
@@ -245,6 +249,8 @@
 		5EF2F9792054B64800191409 /* PrivateResources */ = {
 			isa = PBXGroup;
 			children = (
+				231122C62243B4A500497E01 /* balerina0.png */,
+				231122C52243B4A500497E01 /* balerina1.png */,
 				5EF2F97E2054B6E400191409 /* ManifestPlist.strings */,
 				5E086DCC2051DDAE004D8D25 /* LiveView.storyboard */,
 			);
@@ -377,6 +383,8 @@
 			files = (
 				5EF2F97C2054B6E400191409 /* ManifestPlist.strings in Resources */,
 				5E086DCA2051DDAE004D8D25 /* LiveView.storyboard in Resources */,
+				231122C82243B4A500497E01 /* balerina0.png in Resources */,
+				231122C72243B4A500497E01 /* balerina1.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
