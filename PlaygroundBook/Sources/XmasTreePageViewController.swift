@@ -15,15 +15,6 @@ public class XmasTreePageViewController: UIViewController, PlaygroundLiveViewMes
     
     var sceneView: ARSCNView!
     let node = SCNNode()
-    var speedSliderL0B0 = UISlider()
-    var speedSliderL0B1 = UISlider()
-    var speedSliderL0B2 = UISlider()
-    var speedSliderL1B0 = UISlider()
-    var speedSliderL1B1 = UISlider()
-    var speedSliderL1B2 = UISlider()
-    var speedSliderL2B0 = UISlider()
-    var speedSliderL2B1 = UISlider()
-    var speedSliderL2B2 = UISlider()
     var sliders = [UISlider]()
     
     let I_0: Float = {
@@ -34,40 +25,27 @@ public class XmasTreePageViewController: UIViewController, PlaygroundLiveViewMes
     let session = ARSession()
     
     //    let node3 = SCNNode()
-    let colors = [UIColor(red:0.56, green:0.27, blue:0.68, alpha:1.0), UIColor(red:0.16, green:0.50, blue:0.73, alpha:1.0), UIColor(red:0.95, green:0.77, blue:0.06, alpha:1.0)]
+    let colors = [ UIColor(red:0.81, green:0.13, blue:0.34, alpha:1.0),
+                   UIColor(red:0.96, green:0.60, blue:0.60, alpha:1.0),
+                   UIColor(red:0.94, green:0.86, blue:0.83, alpha:1.0),
+                   UIColor(red:0.91, green:0.38, blue:0.38, alpha:1.0),
+                   UIColor(red:0.67, green:0.27, blue:0.27, alpha:1.0),
+                   UIColor(red:0.26, green:0.34, blue:0.45, alpha:1.0),
+                   UIColor(red:0.18, green:0.64, blue:0.66, alpha:1.0),
+                   UIColor(red:1.00, green:0.67, blue:0.23, alpha:1.0),
+                   UIColor(red:0.99, green:0.38, blue:0.25, alpha:1.0)
+                 ]
     var bulbs = [SCNNode]()
+    let treeColor = UIColor(red:0.22, green:1.00, blue:0.08, alpha:1.0)
+    //       let treeColor = UIColor(red:0.35, green:0.47, blue:0.31, alpha:1.0)
     
     
     override public func viewDidLoad() {
         super.viewDidLoad()
         
         // sceneView.debugOptions = [.showWorldOrigin]
-        print(speedSliderL0B0)
-        sliders = [speedSliderL0B0, speedSliderL0B1, speedSliderL0B2, speedSliderL1B0, speedSliderL1B1, speedSliderL1B2, speedSliderL2B0, speedSliderL2B1, speedSliderL2B2]
-        print(sliders[0])
         sceneView = ARSCNView(frame: self.view.bounds)
         sceneView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
-        for i in 0...8 {
-            var xPosition = CGFloat(0)
-            let yPosition = CGFloat(100)
-            var width = CGFloat(0)
-            let height = CGFloat(20)
-            
-            switch i / 3 {
-            case 0:
-                xPosition = 10
-                width = 0.8 * 3.0 * (sceneView.frame.width - 100.0) / 6.0
-            case 1:
-                xPosition = 3 * sceneView.frame.width / 12.0
-                width = 0.8 * 2.0 * (sceneView.frame.width - 100.0) / 6.0
-            case 2:
-                xPosition = 5 * sceneView.frame.width / 12.0 - 10
-                width = 0.8 * (sceneView.frame.width - 100.0) / 6.0
-            default:
-                return
-            }
-            sliders[i].frame = CGRect(x: xPosition, y: yPosition, width: width, height: height)
-        }
         
         self.view.addSubview(sceneView)
         // Set the view's delegate
@@ -79,23 +57,16 @@ public class XmasTreePageViewController: UIViewController, PlaygroundLiveViewMes
         
         updateUI()
         let action = SCNAction.rotateBy(x: 0, y: 1, z: 0, duration: 1)
-        node.removeAction(forKey: "rotate")
         node.runAction(SCNAction.repeatForever(action), forKey: "rotate")
         
         let tap = UITapGestureRecognizer(target: self, action: #selector(self.handleTap(_:)))
         sceneView.addGestureRecognizer(tap)
         
-        for slider in sliders {
-            slider.addTarget(self, action: #selector(moveBuble(_:)), for: UIControl.Event.valueChanged)
-            slider.addTarget(self, action: #selector(changeSpeed(_:)), for: UIControl.Event.valueChanged)
-            slider.setValue(0.5, animated: false)
-        }
         
-        for i in 0...8 {
-            sliders[i].tag = i
-        }
-        
-        
+    }
+    
+    public override func viewDidLayoutSubviews() {
+        setSliders()
     }
     
     override public func viewWillAppear(_ animated: Bool) {
@@ -117,14 +88,12 @@ public class XmasTreePageViewController: UIViewController, PlaygroundLiveViewMes
     
     func updateUI() {
         
-        for slider in sliders {
-            self.view.addSubview(slider)
-        }
+        
         sceneView.autoenablesDefaultLighting = true
         drawXMassTree()
         node.position = SCNVector3(0, 0, -1)
         sceneView.scene.rootNode.addChildNode(node)
-        setSliders()
+//        setSliders()
         
     }
     
@@ -154,7 +123,7 @@ public class XmasTreePageViewController: UIViewController, PlaygroundLiveViewMes
         }
         
         let xBublePosition = Float(height/2)
-        drawBulbs(atX: xBublePosition, atY: yPosition)
+        drawBulbs(atX: xBublePosition, atY: yPosition, on: level)
         
         for i in 0...2 {
             let branch = drawBranch(size: height)
@@ -187,15 +156,15 @@ public class XmasTreePageViewController: UIViewController, PlaygroundLiveViewMes
         path.close()
         
         let branch = SCNShape(path: path, extrusionDepth: 0.001)
-        branch.firstMaterial?.diffuse.contents = UIColor(red:0.22, green:1.00, blue:0.08, alpha:1.0)
+        branch.firstMaterial?.diffuse.contents = treeColor
         
         return branch
     }
     
-    func drawBulbs(atX xPosition: Float, atY yPosition: Float) {
+    func drawBulbs(atX xPosition: Float, atY yPosition: Float, on level: Int) {
         
         for i in 0...2 {
-            let bulb = drawBulb(i)
+            let bulb = drawBulb(level * 3 + i)
             let node0 = SCNNode(geometry: bulb)
             bulbs.append(node0)
             node.addChildNode(node0)
@@ -219,32 +188,86 @@ public class XmasTreePageViewController: UIViewController, PlaygroundLiveViewMes
     
     func setSliders() {
         
-        let vector00 = SCNVector3(0.8 * 75,0,0)
+        for slider in sliders {
+            slider.removeFromSuperview()
+        }
+        
+        sliders = [UISlider(),
+                   UISlider(),
+                   UISlider(),
+                   UISlider(),
+                   UISlider(),
+                   UISlider(),
+                   UISlider(),
+                   UISlider(),
+                   UISlider()]
+        
+        let a = (min( sceneView.frame.width, sceneView.frame.height) - 40 ) / ( 6 * sqrt(3))
+        let xPosition = CGFloat( 1.5 * a + 10)
+        let height = CGFloat(20)
+        
+        for i in 0...8 {
+            
+            var yPosition = CGFloat(0)
+            var width = CGFloat(0)
+            switch i / 3 {
+            case 0:
+                yPosition = 15 + 4.5 * a * sqrt(3)
+                width = 3 * a
+            case 1:
+                yPosition = 10 + 2 * a * sqrt(3)
+                width = 2 * a
+            case 2:
+                yPosition = 5 + a * sqrt(3) / 2
+                width = a
+            default:
+                return
+            }
+            sliders[i].frame = CGRect(x: xPosition, y: yPosition, width: width, height: height)
+            
+            for slider in sliders {
+                slider.addTarget(self, action: #selector(moveBuble(_:)), for: UIControl.Event.valueChanged)
+                slider.addTarget(self, action: #selector(changeSpeed(_:)), for: UIControl.Event.valueChanged)
+                slider.setValue(0.5, animated: false)
+                self.view.addSubview(slider)
+            }
+            
+            for i in 0...8 {
+                sliders[i].tag = i
+            }
+        }
+
+
+        let vector00 = SCNVector3(1.5 * a,0,0)
         let vector01 = rotate(vector: vector00, by: 120)
         let vector02 = rotate(vector: vector00, by: -120)
-        speedSliderL0B0.transform = CGAffineTransform(translationX: CGFloat(vector00.x), y: CGFloat(vector00.z))
-        speedSliderL0B1.frame.origin = CGPoint(x: speedSliderL0B1.frame.origin.x + CGFloat(vector01.x), y: speedSliderL0B1.frame.origin.y + CGFloat(vector01.z))
-        speedSliderL0B1.transform = CGAffineTransform(rotationAngle: 2 * .pi / 3 )
-        speedSliderL0B2.frame.origin = CGPoint(x: speedSliderL0B2.frame.origin.x + CGFloat(vector02.x), y: speedSliderL0B2.frame.origin.y + CGFloat(vector02.z))
-        speedSliderL0B2.transform = CGAffineTransform(rotationAngle: -2 * .pi / 3 )
-        
-        let vector10 = SCNVector3(0.8 * 50,0,0)
+        sliders[1].frame.origin = CGPoint(x: sliders[1].frame.origin.x - CGFloat(2.25 * a), y: sliders[1].frame.origin.y + CGFloat(vector01.z))
+        sliders[1].transform = CGAffineTransform(rotationAngle: 2 * .pi / 3 )
+        sliders[2].frame.origin = CGPoint(x: sliders[2].frame.origin.x - CGFloat(2.25 * a), y: sliders[2].frame.origin.y + CGFloat(vector02.z))
+        sliders[2].transform = CGAffineTransform(rotationAngle: -2 * .pi / 3 )
+
+        let vector10 = SCNVector3(a,0,0)
         let vector11 = rotate(vector: vector10, by: 120)
         let vector12 = rotate(vector: vector10, by: -120)
-        speedSliderL1B0.transform = CGAffineTransform(translationX: CGFloat(vector10.x), y: CGFloat(vector10.z))
-        speedSliderL1B1.frame.origin = CGPoint(x: speedSliderL1B1.frame.origin.x + CGFloat(vector11.x), y: speedSliderL1B1.frame.origin.y + CGFloat(vector11.z))
-        speedSliderL1B1.transform = CGAffineTransform(rotationAngle: 2 * .pi / 3 )
-        speedSliderL1B2.frame.origin = CGPoint(x: speedSliderL1B2.frame.origin.x + CGFloat(vector12.x), y: speedSliderL1B2.frame.origin.y + CGFloat(vector12.z))
-        speedSliderL1B2.transform = CGAffineTransform(rotationAngle: -2 * .pi / 3 )
-        
-        let vector20 = SCNVector3(0.8 * 25,0,0)
+        sliders[4].frame.origin = CGPoint(x: sliders[4].frame.origin.x - CGFloat(1.5 * a), y: sliders[4].frame.origin.y + CGFloat(vector11.z))
+        sliders[4].transform = CGAffineTransform(rotationAngle: 2 * .pi / 3 )
+        sliders[5].frame.origin = CGPoint(x: sliders[5].frame.origin.x - CGFloat(1.5 * a), y: sliders[5].frame.origin.y + CGFloat(vector12.z))
+        sliders[5].transform = CGAffineTransform(rotationAngle: -2 * .pi / 3 )
+
+        let vector20 = SCNVector3(0.5 * a,0,0)
         let vector21 = rotate(vector: vector20, by: 120)
         let vector22 = rotate(vector: vector20, by: -120)
-        speedSliderL2B0.transform = CGAffineTransform(translationX: CGFloat(vector20.x), y: CGFloat(vector20.z))
-        speedSliderL2B1.frame.origin = CGPoint(x: speedSliderL2B1.frame.origin.x + CGFloat(vector21.x), y: speedSliderL2B1.frame.origin.y + CGFloat(vector21.z))
-        speedSliderL2B1.transform = CGAffineTransform(rotationAngle: 2 * .pi / 3 )
-        speedSliderL2B2.frame.origin = CGPoint(x: speedSliderL2B2.frame.origin.x + CGFloat(vector22.x), y: speedSliderL2B2.frame.origin.y + CGFloat(vector22.z))
-        speedSliderL2B2.transform = CGAffineTransform(rotationAngle: -2 * .pi / 3 )
+        sliders[7].frame.origin = CGPoint(x: sliders[7].frame.origin.x - CGFloat(0.75 * a), y: sliders[7].frame.origin.y + CGFloat(vector21.z))
+        sliders[7].transform = CGAffineTransform(rotationAngle: 2 * .pi / 3 )
+        sliders[8].frame.origin = CGPoint(x: sliders[8].frame.origin.x - CGFloat(0.75 * a), y: sliders[8].frame.origin.y + CGFloat(vector22.z))
+        sliders[8].transform = CGAffineTransform(rotationAngle: -2 * .pi / 3 )
+
+        for i in 0...8 {
+            sliders[i].maximumTrackTintColor = treeColor
+            sliders[i].minimumTrackTintColor = treeColor
+            sliders[i].thumbTintColor = colors[i]
+        }
+        
     }
     
     func rotate(vector: SCNVector3, by angle: Double) -> SCNVector3 {
@@ -273,49 +296,39 @@ public class XmasTreePageViewController: UIViewController, PlaygroundLiveViewMes
     }
     
     func calculateMomentOfInertia() -> Float {
-        let intermediateResult = pow(speedSliderL0B0.value * 0.3, 2) + pow(speedSliderL0B1.value * 0.3, 2) + pow(speedSliderL0B2.value * 0.3, 2)
-            + pow(speedSliderL1B0.value * 0.2, 2) + pow(speedSliderL1B1.value * 0.2, 2) + pow(speedSliderL1B2.value * 0.2, 2)
-            + pow(speedSliderL2B0.value * 0.1, 2) + pow(speedSliderL2B1.value * 0.1, 2) + pow(speedSliderL2B2.value * 0.1, 2)
+        let intermediateResult = pow(sliders[0].value * 0.3, 2) + pow(sliders[1].value * 0.3, 2) + pow(sliders[2].value * 0.3, 2)
+            + pow(sliders[4].value * 0.2, 2) + pow(sliders[5].value * 0.2, 2) + pow(sliders[6].value * 0.2, 2)
+            + pow(sliders[6].value * 0.1, 2) + pow(sliders[7].value * 0.1, 2) + pow(sliders[8].value * 0.1, 2)
         return intermediateResult + ( 6 * pow(0.02, 2) )
     }
     
     @objc func moveBuble(_ sender: UISlider) {
         
-        var slider = UISlider()
         var radius: Float = 0.0
         var angle = 0.0
         switch sender.tag {
         case 0:
-            slider = speedSliderL0B0
             radius = 0.3
         case 1:
-            slider = speedSliderL0B1
             radius = 0.3
             angle = 120
         case 2:
-            slider = speedSliderL0B2
             radius = 0.3
             angle = -120
         case 3:
-            slider = speedSliderL1B0
             radius = 0.2
         case 4:
-            slider = speedSliderL1B1
             radius = 0.2
             angle = 120
         case 5:
-            slider = speedSliderL1B2
             radius = 0.2
             angle = -120
         case 6:
-            slider = speedSliderL2B0
             radius = 0.1
         case 7:
-            slider = speedSliderL2B1
             radius = 0.1
             angle = 120
         case 8:
-            slider = speedSliderL2B2
             radius = 0.1
             angle = -120
         default:

@@ -46,7 +46,8 @@ public class BalerinaPageViewController: UIViewController, PlaygroundLiveViewMes
         
         let layer = CAGradientLayer()
         layer.frame = view.frame
-        layer.colors = [UIColor.white.cgColor, UIColor(red:0.96, green:0.60, blue:0.60, alpha:1.0).cgColor]
+        layer.colors = [ UIColor(red:0.96, green:0.60, blue:0.60, alpha:1.0).cgColor, UIColor.white.cgColor, UIColor(red:0.96, green:0.60, blue:0.60, alpha:1.0).cgColor]
+        layer.colors = [ UIColor.white.cgColor, UIColor(red:0.96, green:0.60, blue:0.60, alpha:1.0).cgColor, UIColor.white.cgColor]
         view.layer.insertSublayer(layer, at: 0)
         stackView.addArrangedSubview(balerina0View)
         stackView.addArrangedSubview(balerina1View)
