@@ -36,8 +36,7 @@ public class XmasTreePageViewController: UIViewController, PlaygroundLiveViewMes
                    UIColor(red:0.99, green:0.38, blue:0.25, alpha:1.0)
                  ]
     var bulbs = [SCNNode]()
-    let treeColor = UIColor(red:0.22, green:1.00, blue:0.08, alpha:1.0)
-    //       let treeColor = UIColor(red:0.35, green:0.47, blue:0.31, alpha:1.0)
+
     
     
     override public func viewDidLoad() {
@@ -156,7 +155,7 @@ public class XmasTreePageViewController: UIViewController, PlaygroundLiveViewMes
         path.close()
         
         let branch = SCNShape(path: path, extrusionDepth: 0.001)
-        branch.firstMaterial?.diffuse.contents = treeColor
+        branch.firstMaterial?.diffuse.contents = UIColor(red:0.22, green:1.00, blue:0.08, alpha:1.0)
         
         return branch
     }
@@ -202,8 +201,9 @@ public class XmasTreePageViewController: UIViewController, PlaygroundLiveViewMes
                    UISlider(),
                    UISlider()]
         
-        let a = (min( sceneView.frame.width, sceneView.frame.height) - 40 ) / ( 6 * sqrt(3))
-        let xPosition = CGFloat( 1.5 * a + 10)
+        let a = (sceneView.frame.height) / ( 6 * sqrt(3)) * 0.7
+        let b = sceneView.frame.height * 0.0375
+        let xPosition = CGFloat( 1.5 * a + 20)
         let height = CGFloat(20)
         
         for i in 0...8 {
@@ -212,13 +212,13 @@ public class XmasTreePageViewController: UIViewController, PlaygroundLiveViewMes
             var width = CGFloat(0)
             switch i / 3 {
             case 0:
-                yPosition = 15 + 4.5 * a * sqrt(3)
+                yPosition = b * 5 + 4.5 * a * sqrt(3)
                 width = 3 * a
             case 1:
-                yPosition = 10 + 2 * a * sqrt(3)
+                yPosition = b * 4 + 2 * a * sqrt(3)
                 width = 2 * a
             case 2:
-                yPosition = 5 + a * sqrt(3) / 2
+                yPosition = b * 3 + a * sqrt(3) / 2
                 width = a
             default:
                 return
@@ -263,8 +263,8 @@ public class XmasTreePageViewController: UIViewController, PlaygroundLiveViewMes
         sliders[8].transform = CGAffineTransform(rotationAngle: -2 * .pi / 3 )
 
         for i in 0...8 {
-            sliders[i].maximumTrackTintColor = treeColor
-            sliders[i].minimumTrackTintColor = treeColor
+            sliders[i].maximumTrackTintColor = UIColor.white
+            sliders[i].minimumTrackTintColor = UIColor.white
             sliders[i].thumbTintColor = colors[i]
         }
         
