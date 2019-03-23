@@ -6,9 +6,10 @@
 //  The Swift file containing the source code edited by the user of this playground book.
 //
 //#-end-hidden-code
+
 /*:
  
- # Have you ever thought what physics and dance have in common?
+ # Rotation
  
  Look at the pictures, can you see the difference between ballerina's positions? How do you think in which case rotational speed is higher?
  

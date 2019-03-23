@@ -26,15 +26,16 @@ public class XmasTreePageViewController: UIViewController, PlaygroundLiveViewMes
     let session = ARSession()
     
     //    let node3 = SCNNode()
-    let colors = [ UIColor(red:0.81, green:0.13, blue:0.34, alpha:1.0),
-                   UIColor(red:0.96, green:0.60, blue:0.60, alpha:1.0),
-                   UIColor(red:0.94, green:0.86, blue:0.83, alpha:1.0),
-                   UIColor(red:0.91, green:0.38, blue:0.38, alpha:1.0),
-                   UIColor(red:0.67, green:0.27, blue:0.27, alpha:1.0),
-                   UIColor(red:0.26, green:0.34, blue:0.45, alpha:1.0),
+    let colors = [ UIColor(red:0.99, green:0.38, blue:0.25, alpha:1.0),
                    UIColor(red:0.18, green:0.64, blue:0.66, alpha:1.0),
                    UIColor(red:1.00, green:0.67, blue:0.23, alpha:1.0),
-                   UIColor(red:0.99, green:0.38, blue:0.25, alpha:1.0)
+                   UIColor(red:0.81, green:0.13, blue:0.34, alpha:1.0),
+                   UIColor(red:0.91, green:0.38, blue:0.38, alpha:1.0),
+                   UIColor(red:0.67, green:0.27, blue:0.27, alpha:1.0),
+                   UIColor(red:0.77, green:0.89, blue:0.93, alpha:1.0),
+                   UIColor(red:0.94, green:0.86, blue:0.83, alpha:1.0),
+                   UIColor(red:0.96, green:0.60, blue:0.60, alpha:1.0)
+        
                  ]
     var bulbs = [SCNNode]()
 
@@ -45,6 +46,7 @@ public class XmasTreePageViewController: UIViewController, PlaygroundLiveViewMes
         
         // sceneView.debugOptions = [.showWorldOrigin]
         sceneView = ARSCNView(frame: self.view.bounds)
+        sceneView.scene.background.contents = UIColor(red:1.00, green:0.97, blue:0.97, alpha:1.0)
         sceneView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
         
         self.view.addSubview(sceneView)
@@ -87,7 +89,6 @@ public class XmasTreePageViewController: UIViewController, PlaygroundLiveViewMes
     }
     
     func updateUI() {
-        
         
         sceneView.autoenablesDefaultLighting = true
         drawXMassTree()
@@ -156,7 +157,9 @@ public class XmasTreePageViewController: UIViewController, PlaygroundLiveViewMes
         path.close()
         
         let branch = SCNShape(path: path, extrusionDepth: 0.001)
-        branch.firstMaterial?.diffuse.contents = UIColor(red:0.22, green:1.00, blue:0.08, alpha:1.0)
+//        branch.firstMaterial?.diffuse.contents = UIColor(red:0.80, green:0.91, blue:0.94, alpha:1.0)
+//        branch.firstMaterial?.diffuse.contents = UIColor(red:0.22, green:1.00, blue:0.08, alpha:1.0)
+        branch.firstMaterial?.diffuse.contents = UIColor(red:1.00, green:0.88, blue:0.90, alpha:1.0)
         
         return branch
     }
@@ -270,8 +273,8 @@ public class XmasTreePageViewController: UIViewController, PlaygroundLiveViewMes
         sliders[8].transform = CGAffineTransform(rotationAngle: -2 * .pi / 3 )
 
         for i in 0...8 {
-            sliders[i].maximumTrackTintColor = UIColor.white
-            sliders[i].minimumTrackTintColor = UIColor.white
+            sliders[i].maximumTrackTintColor = UIColor(red:0.26, green:0.34, blue:0.45, alpha:1.0)
+            sliders[i].minimumTrackTintColor = UIColor(red:0.26, green:0.34, blue:0.45, alpha:1.0)
             sliders[i].thumbTintColor = colors[i]
         }
         
@@ -374,42 +377,10 @@ public class XmasTreePageViewController: UIViewController, PlaygroundLiveViewMes
         let resultVector = SCNVector3(x: lenght * -sin(angle), y: vector.y, z: lenght * -cos(angle))
         return resultVector
     }
-    //    override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
-    //
-    //        //1. Get The Current Touch Point
-    //        guard let currentTouchPoint = touches.first?.location(in: self.sceneView),
-    //            //2. Get The Next Feature Point Etc
-    //            let hitTest = sceneView.hitTest(currentTouchPoint, types: .featurePoint).first else { print("wrong"); return }
-    //        //3. Convert To World Coordinates
-    //        let worldTransform = hitTest.worldTransform
-    //
-    //        //4. Set The New Position
-    //        let newPosition = SCNVector3(worldTransform.columns.3.x, worldTransform.columns.3.y, worldTransform.columns.3.z)
-    //
-    //        //5. Apply To The Node
-    //        node3.simdPosition = float3(newPosition.x, newPosition.y, newPosition.z)
-    //   c
-    //    }
-    //
-    /*
-     public func liveViewMessageConnectionOpened() {
-     // Implement this method to be notified when the live view message connection is opened.
-     // The connection will be opened when the process running Contents.swift starts running and listening for messages.
-     }
-     */
-    
-    /*
-     public func liveViewMessageConnectionClosed() {
-     // Implement this method to be notified when the live view message connection is closed.
-     // The connection will be closed when the process running Contents.swift exits and is no longer listening for messages.
-     // This happens when the user's code naturally finishes running, if the user presses Stop, or if there is a crash.
-     }
-     */
+
     
     public func receive(_ message: PlaygroundValue) {
-        // Implement this method to receive messages sent from the process running Contents.swift.
-        // This method is *required* by the PlaygroundLiveViewMessageHandler protocol.
-        // Use this method to decode any messages sent as PlaygroundValue values and respond accordingly.
+
     }
 }
 

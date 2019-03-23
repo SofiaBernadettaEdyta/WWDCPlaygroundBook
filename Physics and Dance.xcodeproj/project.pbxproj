@@ -11,10 +11,15 @@
 		23111EEB2245A60B00EE0438 /* pivot.png in Resources */ = {isa = PBXBuildFile; fileRef = 23111EE82245A60A00EE0438 /* pivot.png */; };
 		23111EEC2245A60B00EE0438 /* weight.png in Resources */ = {isa = PBXBuildFile; fileRef = 23111EE92245A60B00EE0438 /* weight.png */; };
 		23111EED2245A60B00EE0438 /* lever.png in Resources */ = {isa = PBXBuildFile; fileRef = 23111EEA2245A60B00EE0438 /* lever.png */; };
+		23111EF02246A39400EE0438 /* PhysicsAndDanceCover.png in Resources */ = {isa = PBXBuildFile; fileRef = 23111EEF2246A39400EE0438 /* PhysicsAndDanceCover.png */; };
+		23111EF22246B22500EE0438 /* BalancePageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23111EF12246B22500EE0438 /* BalancePageViewController.swift */; };
+		23111EF42246B3DD00EE0438 /* leverBalance.png in Resources */ = {isa = PBXBuildFile; fileRef = 23111EF32246B3DD00EE0438 /* leverBalance.png */; };
+		23111EF92246ECB100EE0438 /* balerina0.png in Resources */ = {isa = PBXBuildFile; fileRef = 23111EF52246ECB000EE0438 /* balerina0.png */; };
+		23111EFA2246ECB100EE0438 /* balerina1.png in Resources */ = {isa = PBXBuildFile; fileRef = 23111EF62246ECB000EE0438 /* balerina1.png */; };
+		23111EFB2246ECB100EE0438 /* end.png in Resources */ = {isa = PBXBuildFile; fileRef = 23111EF72246ECB000EE0438 /* end.png */; };
+		23111EFC2246ECB100EE0438 /* balanceDancers.png in Resources */ = {isa = PBXBuildFile; fileRef = 23111EF82246ECB100EE0438 /* balanceDancers.png */; };
 		231122C222439F8E00497E01 /* XmasTreePageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 231122C122439F8D00497E01 /* XmasTreePageViewController.swift */; };
 		231122C42243A20B00497E01 /* BalerinaPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 231122C32243A20B00497E01 /* BalerinaPageViewController.swift */; };
-		231122C72243B4A500497E01 /* balerina1.png in Resources */ = {isa = PBXBuildFile; fileRef = 231122C52243B4A500497E01 /* balerina1.png */; };
-		231122C82243B4A500497E01 /* balerina0.png in Resources */ = {isa = PBXBuildFile; fileRef = 231122C62243B4A500497E01 /* balerina0.png */; };
 		5E086DCA2051DDAE004D8D25 /* LiveView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5E086DCC2051DDAE004D8D25 /* LiveView.storyboard */; };
 		5E086DD32051E3A3004D8D25 /* Manifest.plist in Copy Book Contents */ = {isa = PBXBuildFile; fileRef = 5E086DCF2051DF0F004D8D25 /* Manifest.plist */; };
 		5E3196F32061DEA40077BBD7 /* LiveViewSupport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E3196F22061DEA40077BBD7 /* LiveViewSupport.swift */; };
@@ -102,11 +107,16 @@
 		23111EE82245A60A00EE0438 /* pivot.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pivot.png; sourceTree = "<group>"; };
 		23111EE92245A60B00EE0438 /* weight.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = weight.png; sourceTree = "<group>"; };
 		23111EEA2245A60B00EE0438 /* lever.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = lever.png; sourceTree = "<group>"; };
+		23111EEF2246A39400EE0438 /* PhysicsAndDanceCover.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = PhysicsAndDanceCover.png; sourceTree = "<group>"; };
+		23111EF12246B22500EE0438 /* BalancePageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BalancePageViewController.swift; sourceTree = "<group>"; };
+		23111EF32246B3DD00EE0438 /* leverBalance.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = leverBalance.png; path = ../../../../../../Downloads/leverBalance.png; sourceTree = "<group>"; };
+		23111EF52246ECB000EE0438 /* balerina0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = balerina0.png; sourceTree = "<group>"; };
+		23111EF62246ECB000EE0438 /* balerina1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = balerina1.png; sourceTree = "<group>"; };
+		23111EF72246ECB000EE0438 /* end.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = end.png; sourceTree = "<group>"; };
+		23111EF82246ECB100EE0438 /* balanceDancers.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = balanceDancers.png; sourceTree = "<group>"; };
 		231122C122439F8D00497E01 /* XmasTreePageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XmasTreePageViewController.swift; sourceTree = "<group>"; };
 		231122C32243A20B00497E01 /* BalerinaPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BalerinaPageViewController.swift; sourceTree = "<group>"; };
-		231122C52243B4A500497E01 /* balerina1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = balerina1.png; sourceTree = "<group>"; };
-		231122C62243B4A500497E01 /* balerina0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = balerina0.png; sourceTree = "<group>"; };
-		5E086DC02051C5A7004D8D25 /* PlaygroundBook.playgroundbook */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PlaygroundBook.playgroundbook; sourceTree = BUILT_PRODUCTS_DIR; };
+		5E086DC02051C5A7004D8D25 /* Physics and Dance.playgroundbook */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Physics and Dance.playgroundbook"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5E086DC72051DD03004D8D25 /* BookOverridingBuildSettings.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = BookOverridingBuildSettings.xcconfig; sourceTree = "<group>"; };
 		5E086DCD2051DDB8004D8D25 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LiveView.storyboard; sourceTree = "<group>"; };
 		5E086DCF2051DF0F004D8D25 /* Manifest.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Manifest.plist; sourceTree = "<group>"; };
@@ -148,10 +158,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		23111EEE2246A39400EE0438 /* PublicResources */ = {
+			isa = PBXGroup;
+			children = (
+				23111EEF2246A39400EE0438 /* PhysicsAndDanceCover.png */,
+			);
+			path = PublicResources;
+			sourceTree = "<group>";
+		};
 		5E086DA4204F706E004D8D25 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				5E086DC02051C5A7004D8D25 /* PlaygroundBook.playgroundbook */,
+				5E086DC02051C5A7004D8D25 /* Physics and Dance.playgroundbook */,
 				5EF2F9AB2054BBF300191409 /* libBook_Sources.a */,
 				5EA2E3BD2056F35A00416A35 /* LiveViewTestApp.app */,
 			);
@@ -163,6 +181,7 @@
 			children = (
 				5E086DCF2051DF0F004D8D25 /* Manifest.plist */,
 				5EF2F9A22054BB3E00191409 /* Sources */,
+				23111EEE2246A39400EE0438 /* PublicResources */,
 				5EF2F9792054B64800191409 /* PrivateResources */,
 				5EF2F9B62054E6F900191409 /* Chapters */,
 				5EF2F9A42054BB9500191409 /* Supporting Content */,
@@ -257,8 +276,11 @@
 		5EF2F9792054B64800191409 /* PrivateResources */ = {
 			isa = PBXGroup;
 			children = (
-				231122C62243B4A500497E01 /* balerina0.png */,
-				231122C52243B4A500497E01 /* balerina1.png */,
+				23111EF32246B3DD00EE0438 /* leverBalance.png */,
+				23111EF52246ECB000EE0438 /* balerina0.png */,
+				23111EF82246ECB100EE0438 /* balanceDancers.png */,
+				23111EF72246ECB000EE0438 /* end.png */,
+				23111EF62246ECB000EE0438 /* balerina1.png */,
 				23111EE82245A60A00EE0438 /* pivot.png */,
 				23111EEA2245A60B00EE0438 /* lever.png */,
 				23111EE92245A60B00EE0438 /* weight.png */,
@@ -276,6 +298,7 @@
 				231122C122439F8D00497E01 /* XmasTreePageViewController.swift */,
 				231122C32243A20B00497E01 /* BalerinaPageViewController.swift */,
 				23111EE62245A3DE00EE0438 /* LeverPageViewController.swift */,
+				23111EF12246B22500EE0438 /* BalancePageViewController.swift */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
@@ -291,9 +314,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		5E086DBF2051C5A7004D8D25 /* PlaygroundBook */ = {
+		5E086DBF2051C5A7004D8D25 /* Physics and Dance */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 5E086DC52051C5A7004D8D25 /* Build configuration list for PBXNativeTarget "PlaygroundBook" */;
+			buildConfigurationList = 5E086DC52051C5A7004D8D25 /* Build configuration list for PBXNativeTarget "Physics and Dance" */;
 			buildPhases = (
 				5E086DD22051E35D004D8D25 /* Copy Book Contents */,
 				5E086DC62051DB17004D8D25 /* Resources */,
@@ -304,9 +327,9 @@
 			dependencies = (
 				5EF2F9B52054BDD100191409 /* PBXTargetDependency */,
 			);
-			name = PlaygroundBook;
+			name = "Physics and Dance";
 			productName = PlaygroundBook;
-			productReference = 5E086DC02051C5A7004D8D25 /* PlaygroundBook.playgroundbook */;
+			productReference = 5E086DC02051C5A7004D8D25 /* Physics and Dance.playgroundbook */;
 			productType = "com.apple.product-type.bundle";
 		};
 		5EA2E3BC2056F35A00416A35 /* LiveViewTestApp */ = {
@@ -368,7 +391,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 5E2A7AE0204F611300F4E17A /* Build configuration list for PBXProject "PlaygroundBook" */;
+			buildConfigurationList = 5E2A7AE0204F611300F4E17A /* Build configuration list for PBXProject "Physics and Dance" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -381,7 +404,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				5E086DBF2051C5A7004D8D25 /* PlaygroundBook */,
+				5E086DBF2051C5A7004D8D25 /* Physics and Dance */,
 				5EF2F9AA2054BBF300191409 /* Book_Sources */,
 				5EA2E3BC2056F35A00416A35 /* LiveViewTestApp */,
 			);
@@ -394,12 +417,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				5EF2F97C2054B6E400191409 /* ManifestPlist.strings in Resources */,
+				23111EF92246ECB100EE0438 /* balerina0.png in Resources */,
 				23111EEB2245A60B00EE0438 /* pivot.png in Resources */,
+				23111EF42246B3DD00EE0438 /* leverBalance.png in Resources */,
+				23111EFC2246ECB100EE0438 /* balanceDancers.png in Resources */,
+				23111EFA2246ECB100EE0438 /* balerina1.png in Resources */,
 				23111EEC2245A60B00EE0438 /* weight.png in Resources */,
+				23111EF02246A39400EE0438 /* PhysicsAndDanceCover.png in Resources */,
 				5E086DCA2051DDAE004D8D25 /* LiveView.storyboard in Resources */,
 				23111EED2245A60B00EE0438 /* lever.png in Resources */,
-				231122C82243B4A500497E01 /* balerina0.png in Resources */,
-				231122C72243B4A500497E01 /* balerina1.png in Resources */,
+				23111EFB2246ECB100EE0438 /* end.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -447,6 +474,7 @@
 			files = (
 				231122C222439F8E00497E01 /* XmasTreePageViewController.swift in Sources */,
 				5E3196F32061DEA40077BBD7 /* LiveViewSupport.swift in Sources */,
+				23111EF22246B22500EE0438 /* BalancePageViewController.swift in Sources */,
 				231122C42243A20B00497E01 /* BalerinaPageViewController.swift in Sources */,
 				5EF2F9AE2054BBF300191409 /* LiveViewController.swift in Sources */,
 				23111EE72245A3DE00EE0438 /* LeverPageViewController.swift in Sources */,
@@ -458,7 +486,7 @@
 /* Begin PBXTargetDependency section */
 		5EA2E3D02056F36100416A35 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 5E086DBF2051C5A7004D8D25 /* PlaygroundBook */;
+			target = 5E086DBF2051C5A7004D8D25 /* Physics and Dance */;
 			targetProxy = 5EA2E3CF2056F36100416A35 /* PBXContainerItemProxy */;
 		};
 		5EA2E3D22056F36300416A35 /* PBXTargetDependency */ = {
@@ -511,7 +539,7 @@
 				INSTALL_PATH = /;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
 				PRODUCT_BUNDLE_IDENTIFIER = "$(PLAYGROUND_BOOK_CONTENT_IDENTIFIER)";
-				PRODUCT_NAME = "$(PLAYGROUND_BOOK_FILE_NAME)";
+				PRODUCT_NAME = "Physics and Dance";
 				SKIP_INSTALL = NO;
 			};
 			name = Debug;
@@ -525,7 +553,7 @@
 				INSTALL_PATH = /;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
 				PRODUCT_BUNDLE_IDENTIFIER = "$(PLAYGROUND_BOOK_CONTENT_IDENTIFIER)";
-				PRODUCT_NAME = "$(PLAYGROUND_BOOK_FILE_NAME)";
+				PRODUCT_NAME = "Physics and Dance";
 				SKIP_INSTALL = NO;
 			};
 			name = Release;
@@ -720,7 +748,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		5E086DC52051C5A7004D8D25 /* Build configuration list for PBXNativeTarget "PlaygroundBook" */ = {
+		5E086DC52051C5A7004D8D25 /* Build configuration list for PBXNativeTarget "Physics and Dance" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				5E086DC32051C5A7004D8D25 /* Debug */,
@@ -729,7 +757,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		5E2A7AE0204F611300F4E17A /* Build configuration list for PBXProject "PlaygroundBook" */ = {
+		5E2A7AE0204F611300F4E17A /* Build configuration list for PBXProject "Physics and Dance" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				5E2A7AE1204F611300F4E17A /* Debug */,

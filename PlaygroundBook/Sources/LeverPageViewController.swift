@@ -23,6 +23,9 @@ public class LeverPageViewController: UIViewController, PlaygroundLiveViewMessag
     var massRightLabel = SKLabelNode()
     var heavierSide: String!
     var balance: Bool!
+    var weight0LastMovement: SKAction!
+    var weight1LastMovement: SKAction!
+    var leverLastMovement: SKAction!
     
     
     override public func viewDidLoad() {
@@ -43,43 +46,22 @@ public class LeverPageViewController: UIViewController, PlaygroundLiveViewMessag
         skView.presentScene(skScene)
         skView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            skView.topAnchor.constraint(equalTo: self.view.topAnchor),
-            skView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor),
-            skView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
-            skView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor)
+            skView.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 10),
+            skView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: -10),
+            skView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 10),
+            skView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -10)
             ])
         
-        
-        
-        checkButton = UIButton(frame: .zero)
-        
-        checkButton.backgroundColor = UIColor(red:0.91, green:0.38, blue:0.38, alpha:1.0)
-        checkButton.layer.cornerRadius = 20
-        checkButton.clipsToBounds = true
-        checkButton.addTarget(self, action: #selector(rotateLever), for: .touchDown)
-        checkButton.setTitle("CHECK", for: .normal)
-        checkButton.setTitleColor(.white, for: .normal)
-        skView.addSubview(checkButton)
-        checkButton.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            checkButton.centerXAnchor.constraint(equalTo: skView.centerXAnchor),
-            checkButton.centerYAnchor.constraint(equalTo: skView.bottomAnchor, constant: -100),
-            checkButton.widthAnchor.constraint(equalToConstant: 100),
-            checkButton.heightAnchor.constraint(equalToConstant: 40)
-            ])
     }
     
     func drawLever() {
         
-        
-        
         let leverImage = UIImage(named: "lever")
         let leverTexture = SKTexture(image: leverImage!)
-        leverNode = SKSpriteNode(texture: leverTexture, size: CGSize(width: self.view.frame.width * 0.7, height: 10))
+        leverNode = SKSpriteNode(texture: leverTexture, size: CGSize(width: skScene.frame.width * 0.7, height: 10))
         leverNode.anchorPoint = CGPoint(x: 0.5, y: 0.5)
         leverNode.position = CGPoint(x: skScene.frame.width / 2, y: skScene.frame.height / 2)
         skScene.addChild(leverNode)
-        
         
         let weightImage = UIImage(named: "weight")
         let weightTexture = SKTexture(image: weightImage!)
@@ -96,7 +78,7 @@ public class LeverPageViewController: UIViewController, PlaygroundLiveViewMessag
         weight1Node.addChild(massRightLabel)
         weight0Node.addChild(massLeftLabel)
         
-        positionWeigths(leftMass: 1, leftPosition: 1, rightMass: 2, rightPosition: 4)
+        positionWeigths(leftMass: 2, leftPosition: 1, rightMass: 1, rightPosition: 4)
         
         let pivotImage = UIImage(named: "pivot")
         let pivotTexture = SKTexture(image: pivotImage!)
@@ -112,37 +94,66 @@ public class LeverPageViewController: UIViewController, PlaygroundLiveViewMessag
     
     @objc func rotateLever() {
         
+        let time = 0.3
+        let angle = CGFloat.pi / 40
         leverNode.run(SKAction.rotate(toAngle: 0, duration: 0))
-        leverNode.run(SKAction.rotate(byAngle: -.pi/10, duration: 3)) {
-            self.leverNode.run(SKAction.rotate(byAngle: .pi/10, duration: 3)) {
-                self.leverNode.run(SKAction.rotate(byAngle: .pi/10, duration: 3)) {
-//                    self.leverNode.run(SKAction.rotate(byAngle: -.pi/10, duration: 3))
-                }
-            }
-            
-        }
-        
-        weight1Node.run(moveWeight(startAngle: 0, endAngle: -.pi/10, for: weight1Node, clockwise: false)) {
-            self.weight1Node.run(self.moveWeight(startAngle: -.pi/10, endAngle: 0, for: self.weight1Node, clockwise: true)) {
-                self.weight1Node.run(self.moveWeight(startAngle: 0, endAngle: .pi/10, for: self.weight1Node, clockwise: true)) {
-//                    self.weight1Node.run(self.moveWeight(startAngle: .pi/10, endAngle: 0, for: self.weight1Node, clockwise: false))
-                    
-                }
-            }
-            
-        }
-        
-        weight0Node.run(moveWeight(startAngle: .pi, endAngle: .pi - .pi/10, for: weight0Node, clockwise: false)) {
-            self.weight0Node.run(self.moveWeight(startAngle: .pi - .pi/10, endAngle: .pi, for: self.weight0Node, clockwise: true)) {
-                self.weight0Node.run(self.moveWeight(startAngle: .pi, endAngle: .pi + .pi/10, for: self.weight0Node, clockwise: true)) {
-//                    self.weight0Node.run(self.moveWeight(startAngle: .pi + .pi/10, endAngle: .pi, for: self.weight0Node, clockwise: false))
+        leverNode.run(SKAction.rotate(byAngle: -angle, duration: time)) {
+            self.leverNode.run(SKAction.rotate(byAngle: angle, duration: time)) {
+                self.leverNode.run(SKAction.rotate(byAngle: angle, duration: time)) {
+                    self.leverNode.run(SKAction.rotate(byAngle: -angle, duration: time)) {
+                        self.leverNode.run(SKAction.rotate(byAngle: -angle, duration: time)) {
+                            self.leverNode.run(SKAction.rotate(byAngle: angle, duration: time)) {
+                                self.leverNode.run(SKAction.rotate(byAngle: angle, duration: time)) {
+                                    self.leverNode.run(SKAction.rotate(byAngle: -angle, duration: time)) {
+                                        self.leverNode.run(self.leverLastMovement)
+                                    }
+                                }
+                            }
+                        }
+                    }
                 }
             }
         }
         
+        weight1Node.run(moveWeight(startAngle: 0, endAngle: Double(-angle), for: weight1Node, clockwise: false, duration: time)) {
+            self.weight1Node.run(self.moveWeight(startAngle: Double(-angle), endAngle: 0, for: self.weight1Node, clockwise: true, duration: time)) {
+                self.weight1Node.run(self.moveWeight(startAngle: 0, endAngle: Double(angle), for: self.weight1Node, clockwise: true, duration: time)) {
+                    self.weight1Node.run(self.moveWeight(startAngle: Double(angle), endAngle: 0, for: self.weight1Node, clockwise: false, duration: time)) {
+                        self.weight1Node.run(self.moveWeight(startAngle: 0, endAngle: Double(-angle), for: self.weight1Node, clockwise: false, duration: time)) {
+                            self.weight1Node.run(self.moveWeight(startAngle: Double(-angle), endAngle: 0, for: self.weight1Node, clockwise: true, duration: time)) {
+                                self.weight1Node.run(self.moveWeight(startAngle: 0, endAngle: Double(angle), for: self.weight1Node, clockwise: true, duration: time)) {
+                                    self.weight1Node.run(self.moveWeight(startAngle: Double(angle), endAngle: 0, for: self.weight1Node, clockwise: false, duration: time)) {
+                                        self.weight1Node.run(self.weight1LastMovement)
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        
+        weight0Node.run(moveWeight(startAngle: .pi, endAngle: Double(.pi - angle), for: weight0Node, clockwise: false, duration: time)) {
+            self.weight0Node.run(self.moveWeight(startAngle: Double(.pi - angle), endAngle: .pi, for: self.weight0Node, clockwise: true, duration: time)) {
+                self.weight0Node.run(self.moveWeight(startAngle: .pi, endAngle: Double(.pi + angle), for: self.weight0Node, clockwise: true, duration: time)) {
+                    self.weight0Node.run(self.moveWeight(startAngle: Double(.pi + angle), endAngle: .pi, for:  self.weight0Node, clockwise: false, duration: time)) {
+                        self.weight0Node.run(self.moveWeight(startAngle: .pi, endAngle: Double(.pi - angle), for: self.weight0Node, clockwise: false, duration: time)) {
+                            self.weight0Node.run(self.moveWeight(startAngle: Double(.pi - angle), endAngle: .pi, for: self.weight0Node, clockwise: true, duration: time)) {
+                                self.weight0Node.run(self.moveWeight(startAngle: .pi, endAngle: Double(.pi + angle), for: self.weight0Node, clockwise: true, duration: time)) {
+                                    self.weight0Node.run(self.moveWeight(startAngle: Double(.pi + angle), endAngle: .pi, for:  self.weight0Node, clockwise: false, duration: time)){
+                                        self.weight0Node.run(self.weight0LastMovement)
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
     }
     
-    func moveWeight(startAngle: Double, endAngle: Double, for node: SKNode, clockwise: Bool) -> SKAction {
+    
+    func moveWeight(startAngle: Double, endAngle: Double, for node: SKNode, clockwise: Bool, duration: Double) -> SKAction {
         
         let xCenter = leverNode.position.x - node.position.x
         let yCenter = xCenter * CGFloat(tan(startAngle))
@@ -151,7 +162,7 @@ public class LeverPageViewController: UIViewController, PlaygroundLiveViewMessag
         let path = UIBezierPath()
         path.move(to: CGPoint(x: 0, y: 0))
         path.addArc(withCenter: CGPoint(x: xCenter, y: yCenter), radius: abs(radius), startAngle: CGFloat(startAngle), endAngle: CGFloat(endAngle), clockwise: clockwise)
-        return SKAction.follow(path.cgPath, asOffset: true, orientToPath: false, duration: 3)
+        return SKAction.follow(path.cgPath, asOffset: true, orientToPath: false, duration: duration)
         
     }
     
@@ -187,39 +198,29 @@ public class LeverPageViewController: UIViewController, PlaygroundLiveViewMessag
         
         
         if !balance {
+            let time = 0.3 * 4
+            let angle = CGFloat.pi / 10
             heavierSide = mL > mR ? "left" : "right"
+            
+            if heavierSide == "left" {
+                leverLastMovement = SKAction.rotate(byAngle: angle, duration: time)
+                weight0LastMovement = moveWeight(startAngle: Double(.pi - angle), endAngle: .pi, for: self.weight0Node, clockwise: true, duration: time)
+                weight1LastMovement = self.moveWeight(startAngle: Double(-angle), endAngle: 0, for: self.weight1Node, clockwise: true, duration: time)
+            } else if heavierSide == "right" {
+                leverLastMovement = SKAction.rotate(byAngle: -angle, duration: time)
+                weight0LastMovement = moveWeight(startAngle: .pi, endAngle: Double(.pi - angle), for: weight0Node, clockwise: false, duration: time)
+                weight1LastMovement = moveWeight(startAngle: 0, endAngle: Double(-angle), for: weight1Node, clockwise: false, duration: time)
+            }
+            
+        } else {
+            leverLastMovement = SKAction.scale(by: 1, duration: 0)
+            weight0LastMovement = SKAction.scale(by: 1, duration: 0)
+            weight1LastMovement = SKAction.scale(by: 1, duration: 0)
         }
-    }    //    override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
-    //
-    //        //1. Get The Current Touch Point
-    //        guard let currentTouchPoint = touches.first?.location(in: self.sceneView),
-    //            //2. Get The Next Feature Point Etc
-    //            let hitTest = sceneView.hitTest(currentTouchPoint, types: .featurePoint).first else { print("wrong"); return }
-    //        //3. Convert To World Coordinates
-    //        let worldTransform = hitTest.worldTransform
-    //
-    //        //4. Set The New Position
-    //        let newPosition = SCNVector3(worldTransform.columns.3.x, worldTransform.columns.3.y, worldTransform.columns.3.z)
-    //
-    //        //5. Apply To The Node
-    //        node3.simdPosition = float3(newPosition.x, newPosition.y, newPosition.z)
-    //
-    //    }
-    //
-    /*
-     public func liveViewMessageConnectionOpened() {
-     // Implement this method to be notified when the live view message connection is opened.
-     // The connection will be opened when the process running Contents.swift starts running and listening for messages.
-     }
-     */
-    
-    /*
-     public func liveViewMessageConnectionClosed() {
-     // Implement this method to be notified when the live view message connection is closed.
-     // The connection will be closed when the process running Contents.swift exits and is no longer listening for messages.
-     // This happens when the user's code naturally finishes running, if the user presses Stop, or if there is a crash.
-     }
-     */
+        
+        
+        
+    }
     
     public func receive(_ message: PlaygroundValue) {
         guard case let .array(mass) = message else { return }
@@ -227,7 +228,7 @@ public class LeverPageViewController: UIViewController, PlaygroundLiveViewMessag
         guard case let .integer(leftPosition) = mass[1] else {return}
         guard case let .integer(rightMass) = mass[2] else {return}
         guard case let .integer(rightPosition) = mass[3] else {return}
-        
+
         positionWeigths(leftMass: Float(leftMass), leftPosition: Float(leftPosition), rightMass: Float(rightMass), rightPosition: Float(rightPosition))
         rotateLever()
     }
