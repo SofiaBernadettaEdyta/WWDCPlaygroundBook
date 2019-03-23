@@ -31,20 +31,30 @@ public class LeverPageViewController: UIViewController, PlaygroundLiveViewMessag
         drawLever()
     }
     
-    override public func viewDidLayoutSubviews() {
-        
-    }
-    
+
     func skSetUp() {
+        
+        
+        
         skScene = SKScene(size: view.bounds.size)
-        skView = SKView(frame: view.bounds)
+        skView = SKView(frame:.zero)
         skScene.backgroundColor = .white
         self.view.addSubview(skView)
         skScene.scaleMode = .aspectFill
         skView.ignoresSiblingOrder = true
         skView.presentScene(skScene)
+        skView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            skView.topAnchor.constraint(equalTo: self.view.topAnchor),
+            skView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor),
+            skView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
+            skView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor)
+            ])
         
-        checkButton = UIButton(frame: CGRect(x: (skScene.size.width - 100) / 2 , y: skScene.size.height - 100, width: 100, height: 40))
+        
+        
+        checkButton = UIButton(frame: .zero)
+        
         checkButton.backgroundColor = UIColor(red:0.91, green:0.38, blue:0.38, alpha:1.0)
         checkButton.layer.cornerRadius = 20
         checkButton.clipsToBounds = true
@@ -52,6 +62,13 @@ public class LeverPageViewController: UIViewController, PlaygroundLiveViewMessag
         checkButton.setTitle("CHECK", for: .normal)
         checkButton.setTitleColor(.white, for: .normal)
         skView.addSubview(checkButton)
+        checkButton.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            checkButton.centerXAnchor.constraint(equalTo: skView.centerXAnchor),
+            checkButton.centerYAnchor.constraint(equalTo: skView.bottomAnchor, constant: -100),
+            checkButton.widthAnchor.constraint(equalToConstant: 100),
+            checkButton.heightAnchor.constraint(equalToConstant: 40)
+            ])
     }
     
     func drawLever() {
