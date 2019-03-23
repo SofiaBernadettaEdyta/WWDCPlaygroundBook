@@ -34,8 +34,6 @@ public class LeverPageViewController: UIViewController, PlaygroundLiveViewMessag
 
     func skSetUp() {
         
-        
-        
         skScene = SKScene(size: view.bounds.size)
         skView = SKView(frame:.zero)
         skScene.backgroundColor = .white

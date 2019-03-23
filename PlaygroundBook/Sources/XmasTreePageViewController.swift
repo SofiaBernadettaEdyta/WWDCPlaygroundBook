@@ -92,7 +92,7 @@ public class XmasTreePageViewController: UIViewController, PlaygroundLiveViewMes
         drawXMassTree()
         node.position = SCNVector3(0, -0.3, -1)
         sceneView.scene.rootNode.addChildNode(node)
-//        setSliders()
+
         
     }
     
@@ -200,6 +200,11 @@ public class XmasTreePageViewController: UIViewController, PlaygroundLiveViewMes
                    UISlider(),
                    UISlider(),
                    UISlider()]
+        
+        for slider in sliders {
+            slider.minimumValue = 0.1
+            slider.maximumValue = 0.9
+        }
         
         let a = (sceneView.frame.height) / ( 6 * sqrt(3)) * 0.7
         let b = sceneView.frame.height * 0.0375
