@@ -90,7 +90,7 @@ public class XmasTreePageViewController: UIViewController, PlaygroundLiveViewMes
         
         sceneView.autoenablesDefaultLighting = true
         drawXMassTree()
-        node.position = SCNVector3(0, 0, -1)
+        node.position = SCNVector3(0, -0.3, -1)
         sceneView.scene.rootNode.addChildNode(node)
 //        setSliders()
         
@@ -356,7 +356,7 @@ public class XmasTreePageViewController: UIViewController, PlaygroundLiveViewMes
         
         let yAngle = currentFrame.camera.eulerAngles.y
         let translation = rotateByRadian(vector: SCNVector3(0, 0, -1), by: yAngle)
-        node.position = SCNVector3(currentPosition.x + translation.x, currentPosition.y + translation.y, currentPosition.z + translation.z)
+        node.position = SCNVector3(currentPosition.x + translation.x, -0.3, currentPosition.z + translation.z)
         
     }
     
