@@ -16,6 +16,7 @@ public class XmasTreePageViewController: UIViewController, PlaygroundLiveViewMes
     var sceneView: ARSCNView!
     let node = SCNNode()
     var sliders = [UISlider]()
+    var currentValue: [Float] = [0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5]
     
     let I_0: Float = {
         let intermediateResult: Float = Float(pow(0.05, 2.0)) + Float(pow(0.1, 2)) + Float(pow(0.15, 2)) + Float(pow(0.02, 2))
@@ -233,11 +234,12 @@ public class XmasTreePageViewController: UIViewController, PlaygroundLiveViewMes
             for slider in sliders {
                 slider.addTarget(self, action: #selector(moveBuble(_:)), for: UIControl.Event.valueChanged)
                 slider.addTarget(self, action: #selector(changeSpeed(_:)), for: UIControl.Event.valueChanged)
-                slider.setValue(0.5, animated: false)
+                
                 self.view.addSubview(slider)
             }
             
             for i in 0...8 {
+                sliders[i].setValue(currentValue[i], animated: false)
                 sliders[i].tag = i
             }
         }
@@ -348,6 +350,8 @@ public class XmasTreePageViewController: UIViewController, PlaygroundLiveViewMes
         } else {
             bulbs[sender.tag].position.x = node3XPosition
         }
+        
+        currentValue[sender.tag] = sender.value
         
     }
     
