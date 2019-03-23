@@ -111,10 +111,12 @@ public class LeverPageViewController: UIViewController, PlaygroundLiveViewMessag
     }
     
     @objc func rotateLever() {
+        
+        leverNode.run(SKAction.rotate(toAngle: 0, duration: 0))
         leverNode.run(SKAction.rotate(byAngle: -.pi/10, duration: 3)) {
             self.leverNode.run(SKAction.rotate(byAngle: .pi/10, duration: 3)) {
                 self.leverNode.run(SKAction.rotate(byAngle: .pi/10, duration: 3)) {
-                    self.leverNode.run(SKAction.rotate(byAngle: -.pi/10, duration: 3))
+//                    self.leverNode.run(SKAction.rotate(byAngle: -.pi/10, duration: 3))
                 }
             }
             
@@ -123,7 +125,7 @@ public class LeverPageViewController: UIViewController, PlaygroundLiveViewMessag
         weight1Node.run(moveWeight(startAngle: 0, endAngle: -.pi/10, for: weight1Node, clockwise: false)) {
             self.weight1Node.run(self.moveWeight(startAngle: -.pi/10, endAngle: 0, for: self.weight1Node, clockwise: true)) {
                 self.weight1Node.run(self.moveWeight(startAngle: 0, endAngle: .pi/10, for: self.weight1Node, clockwise: true)) {
-                    self.weight1Node.run(self.moveWeight(startAngle: .pi/10, endAngle: 0, for: self.weight1Node, clockwise: false))
+//                    self.weight1Node.run(self.moveWeight(startAngle: .pi/10, endAngle: 0, for: self.weight1Node, clockwise: false))
                     
                 }
             }
@@ -133,7 +135,7 @@ public class LeverPageViewController: UIViewController, PlaygroundLiveViewMessag
         weight0Node.run(moveWeight(startAngle: .pi, endAngle: .pi - .pi/10, for: weight0Node, clockwise: false)) {
             self.weight0Node.run(self.moveWeight(startAngle: .pi - .pi/10, endAngle: .pi, for: self.weight0Node, clockwise: true)) {
                 self.weight0Node.run(self.moveWeight(startAngle: .pi, endAngle: .pi + .pi/10, for: self.weight0Node, clockwise: true)) {
-                    self.weight0Node.run(self.moveWeight(startAngle: .pi + .pi/10, endAngle: .pi, for: self.weight0Node, clockwise: false))
+//                    self.weight0Node.run(self.moveWeight(startAngle: .pi + .pi/10, endAngle: .pi, for: self.weight0Node, clockwise: false))
                 }
             }
         }
@@ -227,6 +229,7 @@ public class LeverPageViewController: UIViewController, PlaygroundLiveViewMessag
         guard case let .integer(rightPosition) = mass[3] else {return}
         
         positionWeigths(leftMass: Float(leftMass), leftPosition: Float(leftPosition), rightMass: Float(rightMass), rightPosition: Float(rightPosition))
+        rotateLever()
     }
 }
 
