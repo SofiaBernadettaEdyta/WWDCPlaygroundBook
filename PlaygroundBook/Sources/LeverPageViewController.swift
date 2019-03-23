@@ -93,6 +93,8 @@ public class LeverPageViewController: UIViewController, PlaygroundLiveViewMessag
         weight1Node.anchorPoint = CGPoint(x: 0.5, y: 0.92)
         //        weight1Node.position = CGPoint(x: 3 * skScene.frame.width / 4, y: skScene.frame.height / 2)
         skScene.addChild(weight1Node)
+        weight1Node.addChild(massRightLabel)
+        weight0Node.addChild(massLeftLabel)
         
         positionWeigths(leftMass: 1, leftPosition: 1, rightMass: 2, rightPosition: 4)
         
@@ -166,18 +168,15 @@ public class LeverPageViewController: UIViewController, PlaygroundLiveViewMessag
         weight1Node.position = CGPoint(x: CGFloat(xPositionR), y: skScene.frame.height / 2)
         
         massLeftLabel.text = "\(leftMass) kg"
-        
-        
         massLeftLabel.fontColor = UIColor(red:0.81, green:0.13, blue:0.34, alpha:1.0)
         massLeftLabel.position = CGPoint(x: 0, y: -3 * weight0Node.size.height / 4)
         massLeftLabel.fontSize = 16
-        weight0Node.addChild(massLeftLabel)
         
         massRightLabel.text = "\(rightMass) kg"
         massRightLabel.fontColor = UIColor(red:0.81, green:0.13, blue:0.34, alpha:1.0)
         massRightLabel.position = CGPoint(x: 0, y: -3 * weight1Node.size.height / 4)
         massRightLabel.fontSize = 16
-        weight1Node.addChild(massRightLabel)
+        
         
         let mL = leftMass * leftPosition
         let mR = rightMass * rightPosition
@@ -221,9 +220,13 @@ public class LeverPageViewController: UIViewController, PlaygroundLiveViewMessag
      */
     
     public func receive(_ message: PlaygroundValue) {
-        // Implement this method to receive messages sent from the process running Contents.swift.
-        // This method is *required* by the PlaygroundLiveViewMessageHandler protocol.
-        // Use this method to decode any messages sent as PlaygroundValue values and respond accordingly.
+        guard case let .array(mass) = message else { return }
+        guard case let .integer(leftMass) = mass[0] else {return}
+        guard case let .integer(leftPosition) = mass[1] else {return}
+        guard case let .integer(rightMass) = mass[2] else {return}
+        guard case let .integer(rightPosition) = mass[3] else {return}
+        
+        positionWeigths(leftMass: Float(leftMass), leftPosition: Float(leftPosition), rightMass: Float(rightMass), rightPosition: Float(rightPosition))
     }
 }
 
