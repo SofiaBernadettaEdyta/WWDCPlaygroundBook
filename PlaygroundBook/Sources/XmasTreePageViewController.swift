@@ -35,8 +35,8 @@ public class XmasTreePageViewController: UIViewController, PlaygroundLiveViewMes
                    UIColor(red:0.77, green:0.89, blue:0.93, alpha:1.0),
                    UIColor(red:0.94, green:0.86, blue:0.83, alpha:1.0),
                    UIColor(red:0.96, green:0.60, blue:0.60, alpha:1.0)
-        
                  ]
+    
     var bulbs = [SCNNode]()
 
     
@@ -49,13 +49,13 @@ public class XmasTreePageViewController: UIViewController, PlaygroundLiveViewMes
         sceneView.scene.background.contents = UIColor(red:1.00, green:0.97, blue:0.97, alpha:1.0)
         sceneView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
         
+        
         self.view.addSubview(sceneView)
         // Set the view's delegate
         
         sceneView.delegate = self
+        sceneView.showsStatistics = false
         
-        // Show statistics such as fps and timing information
-        sceneView.showsStatistics = true
         
         updateUI()
         let action = SCNAction.rotateBy(x: 0, y: 1, z: 0, duration: 1)
@@ -205,10 +205,18 @@ public class XmasTreePageViewController: UIViewController, PlaygroundLiveViewMes
                    UISlider(),
                    UISlider()]
         
-        for slider in sliders {
-            slider.minimumValue = 0.1
-            slider.maximumValue = 0.9
-        }
+        for i in 0...8 {
+            if i / 3 == 0 {
+                sliders[i].minimumValue = 0.066666
+                sliders[i].maximumValue = 0.933333
+            } else if i / 3 == 1 {
+                sliders[i].minimumValue = 0.1
+                sliders[i].maximumValue = 0.9
+            } else if i / 3 == 2 {
+                sliders[i].minimumValue = 0.2
+                sliders[i].maximumValue = 0.8
+            }
+         }
         
         let a = (sceneView.frame.height) / ( 6 * sqrt(3)) * 0.7
         let b = sceneView.frame.height * 0.0375

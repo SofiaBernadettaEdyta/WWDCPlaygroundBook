@@ -9,16 +9,17 @@
 
 /*:
  
- # Rotating Xmass Tree
+ # Speed up Xmass Tree!
  
- Here you can observe Conservation of angular momentum by changing position of bubles on the Xmass Tree.
+ Here you can observe Conservation of angular momentum by changing a position of bubbles on the Xmass Tree.
+ To move bubbles use sliders on the left.
  
- If you put bubles closer to the rotating axis moment of inertia decreases and rotation speed increases.
- 
+ I dare you to speed up Xmass Tree!
  Let's try!
  
+ If you need reminder you can always go to [the previous page](@previous).
  
- To start allow camera access, it let you see object in AR.
+ To start to allow camera access, it let you see an object in AR.
  If you can't see Xmass Tree just tap on the screen.
  
  */

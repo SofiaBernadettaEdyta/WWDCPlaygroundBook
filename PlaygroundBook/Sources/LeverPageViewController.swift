@@ -120,8 +120,8 @@ public class LeverPageViewController: UIViewController, PlaygroundLiveViewMessag
     
     @objc func rotateLever() {
         isMoving = true
-        let time = 0.3
-        let angle = CGFloat.pi / 40
+        let time = 0.1
+        let angle = CGFloat.pi / 60
         leverNode.run(SKAction.rotate(toAngle: 0, duration: 0))
         leverNode.run(SKAction.rotate(byAngle: -angle, duration: time)) {
             self.leverNode.run(SKAction.rotate(byAngle: angle, duration: time)) {
@@ -210,15 +210,17 @@ public class LeverPageViewController: UIViewController, PlaygroundLiveViewMessag
         }()
         weight1Node.position = CGPoint(x: CGFloat(xPositionR), y: leverNode.position.y)
         
-        massLeftLabel.text = "\(leftMass) kg"
-        massLeftLabel.fontColor = UIColor(red:0.81, green:0.13, blue:0.34, alpha:1.0)
+        massLeftLabel.text = "\(Int(leftMass)) kg"
         massLeftLabel.position = CGPoint(x: 0, y: -3 * weight0Node.size.height / 4)
+        massLeftLabel.fontName = "Baskerville-SemiBold "
         massLeftLabel.fontSize = 16
+        massLeftLabel.fontColor = UIColor(red:0.96, green:0.60, blue:0.60, alpha:1.0)
         
-        massRightLabel.text = "\(rightMass) kg"
-        massRightLabel.fontColor = UIColor(red:0.81, green:0.13, blue:0.34, alpha:1.0)
+        massRightLabel.text = "\(Int(rightMass)) kg"
         massRightLabel.position = CGPoint(x: 0, y: -3 * weight1Node.size.height / 4)
+        massRightLabel.fontName = "Baskerville-SemiBold "
         massRightLabel.fontSize = 16
+        massRightLabel.fontColor = UIColor(red:0.96, green:0.60, blue:0.60, alpha:1.0)
         
         
         let mL = leftMass * leftPosition
@@ -228,7 +230,7 @@ public class LeverPageViewController: UIViewController, PlaygroundLiveViewMessag
         
         
         if !balance {
-            let time = 0.3 * 4
+            let time = 0.1 * 6
             let angle = CGFloat.pi / 10
             heavierSide = mL > mR ? "left" : "right"
             
