@@ -35,6 +35,13 @@ public class LeverPageViewController: UIViewController, PlaygroundLiveViewMessag
     }
     
 
+    public override func viewDidLayoutSubviews() {
+        skScene = SKScene(size: view.bounds.size)
+        leverNode.size = CGSize(width: skScene.frame.width * 0.7, height: 10)
+        positionWeigths(leftMass: 2, leftPosition: 1, rightMass: 1, rightPosition: 4)
+        leverNode.run(SKAction.rotate(toAngle: 0, duration: 0))
+    }
+    
     func skSetUp() {
         
         skScene = SKScene(size: view.bounds.size)
@@ -78,7 +85,7 @@ public class LeverPageViewController: UIViewController, PlaygroundLiveViewMessag
         weight1Node.addChild(massRightLabel)
         weight0Node.addChild(massLeftLabel)
         
-        positionWeigths(leftMass: 2, leftPosition: 1, rightMass: 1, rightPosition: 4)
+        
         
         let pivotImage = UIImage(named: "pivot")
         let pivotTexture = SKTexture(image: pivotImage!)
@@ -170,15 +177,22 @@ public class LeverPageViewController: UIViewController, PlaygroundLiveViewMessag
     func positionWeigths(leftMass: Float, leftPosition: Float, rightMass: Float, rightPosition: Float) {
         
         let xPositionL: Float = {
-            let intermediateResult = 0.5 - leftPosition * 0.066
-            return Float(skScene.frame.width) * intermediateResult
+            
+            let intermediateResult = leftPosition * Float(leverNode.size.width) / 11
+            return Float(leverNode.position.x) - intermediateResult
+            
+//            let intermediateResult = 0.5 - leftPosition * 0.066
+//            return Float(skScene.frame.width) * intermediateResult
         }()
-        weight0Node.position = CGPoint(x: CGFloat(xPositionL), y: skScene.frame.height / 2)
+        weight0Node.position = CGPoint(x: CGFloat(xPositionL), y: leverNode.position.y)
         let xPositionR: Float = {
-            let intermediateResult = 0.5 + rightPosition * 0.066
-            return Float(skScene.frame.width) * intermediateResult
+            let intermediateResult = rightPosition * Float(leverNode.size.width) / 11
+            return Float(leverNode.position.x) + intermediateResult
+            
+//            let intermediateResult = 0.5 + rightPosition * 0.066
+//            return Float(skScene.frame.width) * intermediateResult
         }()
-        weight1Node.position = CGPoint(x: CGFloat(xPositionR), y: skScene.frame.height / 2)
+        weight1Node.position = CGPoint(x: CGFloat(xPositionR), y: leverNode.position.y)
         
         massLeftLabel.text = "\(leftMass) kg"
         massLeftLabel.fontColor = UIColor(red:0.81, green:0.13, blue:0.34, alpha:1.0)
