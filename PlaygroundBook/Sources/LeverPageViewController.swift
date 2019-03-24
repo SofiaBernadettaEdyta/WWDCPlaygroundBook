@@ -27,6 +27,11 @@ public class LeverPageViewController: UIViewController, PlaygroundLiveViewMessag
     var weight1LastMovement: SKAction!
     var leverLastMovement: SKAction!
     var backgroundNode: SKShapeNode!
+    var leftMass = 2
+    var leftPosition = 1
+    var rightMass = 1
+    var rightPosition = 4
+    var isMoving = false
     
     override public func viewDidLoad() {
         
@@ -38,8 +43,17 @@ public class LeverPageViewController: UIViewController, PlaygroundLiveViewMessag
     public override func viewDidLayoutSubviews() {
         skScene = SKScene(size: view.bounds.size)
         leverNode.size = CGSize(width: skScene.frame.width * 0.7, height: 10)
-        positionWeigths(leftMass: 2, leftPosition: 1, rightMass: 1, rightPosition: 4)
+        positionWeigths(leftMass: Float(leftMass), leftPosition: Float(leftPosition), rightMass: Float(rightMass), rightPosition: Float(rightPosition))
         leverNode.run(SKAction.rotate(toAngle: 0, duration: 0))
+        leverNode.removeAllActions()
+        weight0Node.removeAllActions()
+        weight1Node.removeAllActions()
+        if isMoving {
+            rotateLever()
+        } else {
+            leverNode.run(SKAction.rotate(toAngle: 0, duration: 0))
+        }
+        
     }
     
     func skSetUp() {
@@ -105,7 +119,7 @@ public class LeverPageViewController: UIViewController, PlaygroundLiveViewMessag
     }
     
     @objc func rotateLever() {
-        
+        isMoving = true
         let time = 0.3
         let angle = CGFloat.pi / 40
         leverNode.run(SKAction.rotate(toAngle: 0, duration: 0))
@@ -118,6 +132,7 @@ public class LeverPageViewController: UIViewController, PlaygroundLiveViewMessag
                                 self.leverNode.run(SKAction.rotate(byAngle: angle, duration: time)) {
                                     self.leverNode.run(SKAction.rotate(byAngle: -angle, duration: time)) {
                                         self.leverNode.run(self.leverLastMovement)
+                                        self.isMoving = false
                                     }
                                 }
                             }
@@ -244,6 +259,11 @@ public class LeverPageViewController: UIViewController, PlaygroundLiveViewMessag
         guard case let .integer(rightMass) = mass[2] else {return}
         guard case let .integer(rightPosition) = mass[3] else {return}
 
+        self.leftMass = leftMass
+        self.leftPosition = leftPosition
+        self.rightMass = rightMass
+        self.rightPosition = rightPosition
+        
         positionWeigths(leftMass: Float(leftMass), leftPosition: Float(leftPosition), rightMass: Float(rightMass), rightPosition: Float(rightPosition))
         rotateLever()
     }
