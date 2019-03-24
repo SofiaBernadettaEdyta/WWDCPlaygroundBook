@@ -1,5 +1,5 @@
 //
-//  BalerinaPageViewController.swift
+//  BalancePageViewController.swift
 //  Book_Sources
 //
 //  Created by Zofia Drabek on 21/03/2019.

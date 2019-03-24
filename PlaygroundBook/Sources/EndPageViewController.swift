@@ -12,13 +12,13 @@ import PlaygroundSupport
 
 public class EndPageViewController: UIViewController, PlaygroundLiveViewMessageHandler, PlaygroundLiveViewSafeAreaContainer {
     
-    var balerina0View: UIImageView!
+    var endImageView: UIImageView!
     var stackView: UIStackView!
     
     override public func viewDidLoad() {
         super.viewDidLoad()
         
-        balerina0View = UIImageView(image: UIImage(named: "end"))
+        endImageView = UIImageView(image: UIImage(named: "end"))
         stackView = UIStackView()
         
         stackView.distribution = .fillEqually
@@ -26,7 +26,7 @@ public class EndPageViewController: UIViewController, PlaygroundLiveViewMessageH
         stackView.alignment = .center
         
         stackView.contentMode = .center
-        balerina0View.contentMode = .scaleAspectFit
+        endImageView.contentMode = .scaleAspectFit
         
         view.addSubview(stackView)
         
@@ -47,7 +47,7 @@ public class EndPageViewController: UIViewController, PlaygroundLiveViewMessageH
         layer.colors = [ UIColor(red:0.96, green:0.60, blue:0.60, alpha:1.0).cgColor, UIColor.white.cgColor, UIColor(red:0.96, green:0.60, blue:0.60, alpha:1.0).cgColor]
         layer.colors = [ UIColor.white.cgColor, UIColor(red:0.96, green:0.60, blue:0.60, alpha:1.0).cgColor, UIColor.white.cgColor]
         view.layer.insertSublayer(layer, at: 0)
-        stackView.addArrangedSubview(balerina0View)
+        stackView.addArrangedSubview(endImageView)
     }
     
 }

@@ -1,9 +1,8 @@
 //
-//  See LICENSE folder for this template’s licensing information.
+//  XmasTreePageViewController.swift
+//  Book_Sources
 //
-//  Abstract:
-//  An auxiliary source file which is part of the book-level auxiliary sources.
-//  Provides the implementation of the "always-on" live view.
+//  Created by Zofia Drabek on 13/03/2019.
 //
 
 import UIKit
@@ -38,20 +37,16 @@ public class XmasTreePageViewController: UIViewController, PlaygroundLiveViewMes
                  ]
     
     var bulbs = [SCNNode]()
-
-    
     
     override public func viewDidLoad() {
         super.viewDidLoad()
         
-        // sceneView.debugOptions = [.showWorldOrigin]
         sceneView = ARSCNView(frame: self.view.bounds)
         sceneView.scene.background.contents = UIColor(red:1.00, green:0.97, blue:0.97, alpha:1.0)
         sceneView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
         
         
         self.view.addSubview(sceneView)
-        // Set the view's delegate
         
         sceneView.delegate = self
         sceneView.showsStatistics = false
@@ -63,7 +58,6 @@ public class XmasTreePageViewController: UIViewController, PlaygroundLiveViewMes
         
         let tap = UITapGestureRecognizer(target: self, action: #selector(self.handleTap(_:)))
         sceneView.addGestureRecognizer(tap)
-        
         
     }
     
@@ -157,8 +151,6 @@ public class XmasTreePageViewController: UIViewController, PlaygroundLiveViewMes
         path.close()
         
         let branch = SCNShape(path: path, extrusionDepth: 0.001)
-//        branch.firstMaterial?.diffuse.contents = UIColor(red:0.80, green:0.91, blue:0.94, alpha:1.0)
-//        branch.firstMaterial?.diffuse.contents = UIColor(red:0.22, green:1.00, blue:0.08, alpha:1.0)
         branch.firstMaterial?.diffuse.contents = UIColor(red:1.00, green:0.88, blue:0.90, alpha:1.0)
         
         return branch
@@ -245,7 +237,6 @@ public class XmasTreePageViewController: UIViewController, PlaygroundLiveViewMes
             for slider in sliders {
                 slider.addTarget(self, action: #selector(moveBuble(_:)), for: UIControl.Event.valueChanged)
                 slider.addTarget(self, action: #selector(changeSpeed(_:)), for: UIControl.Event.valueChanged)
-                
                 self.view.addSubview(slider)
             }
             
@@ -300,8 +291,6 @@ public class XmasTreePageViewController: UIViewController, PlaygroundLiveViewMes
         
         return resultVector
     }
-    
-    
     
     @objc func changeSpeed(_ sender: UISlider) {
         
@@ -385,11 +374,7 @@ public class XmasTreePageViewController: UIViewController, PlaygroundLiveViewMes
         let resultVector = SCNVector3(x: lenght * -sin(angle), y: vector.y, z: lenght * -cos(angle))
         return resultVector
     }
-
     
-    public func receive(_ message: PlaygroundValue) {
-
-    }
 }
 
 

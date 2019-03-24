@@ -1,9 +1,8 @@
 //
-//  See LICENSE folder for this template’s licensing information.
+//  LeverPageViewController.swift
+//  Book_Sources
 //
-//  Abstract:
-//  An auxiliary source file which is part of the book-level auxiliary sources.
-//  Provides the implementation of the "always-on" live view.
+//  Created by Zofia Drabek on 21/03/2019.
 //
 
 import UIKit
@@ -93,13 +92,11 @@ public class LeverPageViewController: UIViewController, PlaygroundLiveViewMessag
         let weightTexture = SKTexture(image: weightImage!)
         weight0Node = SKSpriteNode(texture: weightTexture, size: CGSize(width: skScene.size.width * 0.1, height: skScene.size.height * 0.1))
         weight0Node.anchorPoint = CGPoint(x: 0.5, y: 0.92)
-        //        weight0Node.position = CGPoint(x: skScene.frame.width / 4, y: skScene.frame.height / 2)
         backgroundNode.addChild(weight0Node)
         
         
         weight1Node = SKSpriteNode(texture: weightTexture, size: CGSize(width: skScene.size.width * 0.1, height: skScene.size.height * 0.1))
         weight1Node.anchorPoint = CGPoint(x: 0.5, y: 0.92)
-        //        weight1Node.position = CGPoint(x: 3 * skScene.frame.width / 4, y: skScene.frame.height / 2)
         backgroundNode.addChild(weight1Node)
         weight1Node.addChild(massRightLabel)
         weight0Node.addChild(massLeftLabel)
@@ -270,13 +267,3 @@ public class LeverPageViewController: UIViewController, PlaygroundLiveViewMessag
         rotateLever()
     }
 }
-
-//
-//  ViewController.swift
-//  XMasTree
-//
-//  Created by Zofia Drabek on 13/03/2019.
-//  Copyright © 2019 Zofia Drabek. All rights reserved.
-//
-
-
