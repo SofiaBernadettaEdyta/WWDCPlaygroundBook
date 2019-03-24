@@ -9,17 +9,17 @@
 
 /*:
  
- # Speed up Xmass Tree!
+ # Speed up the Xmass Tree!
  
  Here you can observe Conservation of angular momentum by changing a position of bubbles on the Xmass Tree.
  To move bubbles use sliders on the left.
  
- I dare you to speed up Xmass Tree!
- Let's try!
+ I dare you to speed up the Xmass Tree!
+ Let's try it!
  
- If you need reminder you can always go to [the previous page](@previous).
+ If you need a reminder, you can always go to [the previous page](@previous).
  
- To start to allow camera access, it let you see an object in AR.
- If you can't see Xmass Tree just tap on the screen.
+ To start, allow camera access, it will let you see an object in AR.
+ If you can't see Xmass Tree tap on the screen.
  
  */

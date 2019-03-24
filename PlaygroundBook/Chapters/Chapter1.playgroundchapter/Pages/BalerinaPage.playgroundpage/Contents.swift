@@ -11,14 +11,14 @@
  
  # Rotation
  
- Look at the pictures, can you see the difference between ballerina's positions? How do you think in which case rotational speed is higher?
+ Look at the pictures, can you see the difference between ballerina's positions? In which case, the rotational speed is higher?
  
- On the first one ballerina has a higher "moment of inertia", because she has her arms and legs extended. And on the second picture ballerina refracted her leg and arms.
+ On the first one ballerina has a higher moment of inertia, because she has her arms and leg extended. And on the second picture ballerina refracted her leg and arms.
  
- In physics there is "Conservation of angular momentum", and because of that if the moment of inertia increases the rotational speed decreases and opposite if the moment of inertia decreases the rotational speed increases.
+ In physics, there is conservation of angular momentum, and because of that if the moment of inertia increases the rotational speed decreases and opposite if the moment of inertia decreases the rotational speed increases.
  
- So if ballerina changed her position from 1 to 2 her rotational speed is increased.
+ So if ballerina changed her position from 1 to 2, her rotational speed increased.
  
-  [Click here to experiment with conservation of angular momentum!](@next)
+ [Click here to experiment with conservation of angular momentum!](@next)
 
 */

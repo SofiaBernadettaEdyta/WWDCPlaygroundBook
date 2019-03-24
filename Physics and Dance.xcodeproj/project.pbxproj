@@ -20,6 +20,7 @@
 		23111EFC2246ECB100EE0438 /* balanceDancers.png in Resources */ = {isa = PBXBuildFile; fileRef = 23111EF82246ECB100EE0438 /* balanceDancers.png */; };
 		231122C222439F8E00497E01 /* XmasTreePageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 231122C122439F8D00497E01 /* XmasTreePageViewController.swift */; };
 		231122C42243A20B00497E01 /* BalerinaPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 231122C32243A20B00497E01 /* BalerinaPageViewController.swift */; };
+		2313B6482247B9EC00A21164 /* EndPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2313B6472247B9EC00A21164 /* EndPageViewController.swift */; };
 		5E086DCA2051DDAE004D8D25 /* LiveView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5E086DCC2051DDAE004D8D25 /* LiveView.storyboard */; };
 		5E086DD32051E3A3004D8D25 /* Manifest.plist in Copy Book Contents */ = {isa = PBXBuildFile; fileRef = 5E086DCF2051DF0F004D8D25 /* Manifest.plist */; };
 		5E3196F32061DEA40077BBD7 /* LiveViewSupport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E3196F22061DEA40077BBD7 /* LiveViewSupport.swift */; };
@@ -116,6 +117,7 @@
 		23111EF82246ECB100EE0438 /* balanceDancers.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = balanceDancers.png; sourceTree = "<group>"; };
 		231122C122439F8D00497E01 /* XmasTreePageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XmasTreePageViewController.swift; sourceTree = "<group>"; };
 		231122C32243A20B00497E01 /* BalerinaPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BalerinaPageViewController.swift; sourceTree = "<group>"; };
+		2313B6472247B9EC00A21164 /* EndPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndPageViewController.swift; sourceTree = "<group>"; };
 		5E086DC02051C5A7004D8D25 /* Physics and Dance.playgroundbook */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Physics and Dance.playgroundbook"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5E086DC72051DD03004D8D25 /* BookOverridingBuildSettings.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = BookOverridingBuildSettings.xcconfig; sourceTree = "<group>"; };
 		5E086DCD2051DDB8004D8D25 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LiveView.storyboard; sourceTree = "<group>"; };
@@ -299,6 +301,7 @@
 				231122C32243A20B00497E01 /* BalerinaPageViewController.swift */,
 				23111EE62245A3DE00EE0438 /* LeverPageViewController.swift */,
 				23111EF12246B22500EE0438 /* BalancePageViewController.swift */,
+				2313B6472247B9EC00A21164 /* EndPageViewController.swift */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
@@ -473,6 +476,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				231122C222439F8E00497E01 /* XmasTreePageViewController.swift in Sources */,
+				2313B6482247B9EC00A21164 /* EndPageViewController.swift in Sources */,
 				5E3196F32061DEA40077BBD7 /* LiveViewSupport.swift in Sources */,
 				23111EF22246B22500EE0438 /* BalancePageViewController.swift in Sources */,
 				231122C42243A20B00497E01 /* BalerinaPageViewController.swift in Sources */,
