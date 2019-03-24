@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Terms</key>
+	<dict>
+		<key>Rotational Speed</key>
+		<dict>
+			<key>Definition</key>
+			<string>says how many times an object rotates around an axis in a particular time</string>
+		</dict>
+		<key>Moment Of Inertia</key>
+		<dict>
+			<key>Definition</key>
+			<string>the equivalent of mass in rotational movement, says how difficult it is to put the object in rotational motion</string>
+		</dict>
+		<key>Conservation Of Angular Momentum</key>
+		<dict>
+			<key>Definition</key>
+			<string>Physics Law saying that moment of inertia multiplied by rotational speed is constant in a closed system</string>
+		</dict>
+	</dict>
+</dict>
+</plist>

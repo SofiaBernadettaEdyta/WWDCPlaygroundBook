@@ -214,7 +214,7 @@ public class XmasTreePageViewController: UIViewController, PlaygroundLiveViewMes
                 sliders[i].maximumValue = 0.9
             } else if i / 3 == 2 {
                 sliders[i].minimumValue = 0.2
-                sliders[i].maximumValue = 0.8
+                sliders[i].maximumValue = 0.933333
             }
          }
         
@@ -391,13 +391,5 @@ public class XmasTreePageViewController: UIViewController, PlaygroundLiveViewMes
 
     }
 }
-
-//
-//  ViewController.swift
-//  XMasTree
-//
-//  Created by Zofia Drabek on 13/03/2019.
-//  Copyright © 2019 Zofia Drabek. All rights reserved.
-//
 
 

@@ -11,7 +11,7 @@
  
  # Speed up the Xmass Tree!
  
- Here you can observe Conservation of angular momentum by changing a position of bubbles on the Xmass Tree.
+ Here you can observe [conservation of angular momentum](glossary://Conservation%20Of%20Angular%20Momentum) by changing a position of bubbles on the Xmass Tree.
  To move bubbles use sliders on the left.
  
  I dare you to speed up the Xmass Tree!
