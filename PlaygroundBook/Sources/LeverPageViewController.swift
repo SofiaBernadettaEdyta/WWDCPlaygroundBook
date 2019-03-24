@@ -26,7 +26,7 @@ public class LeverPageViewController: UIViewController, PlaygroundLiveViewMessag
     var weight0LastMovement: SKAction!
     var weight1LastMovement: SKAction!
     var leverLastMovement: SKAction!
-    
+    var backgroundNode: SKShapeNode!
     
     override public func viewDidLoad() {
         
@@ -63,25 +63,30 @@ public class LeverPageViewController: UIViewController, PlaygroundLiveViewMessag
     
     func drawLever() {
         
+        backgroundNode = SKShapeNode(rect: CGRect(origin: CGPoint(x: 0, y: 0), size: view.bounds.size))
+        backgroundNode.fillColor = UIColor.white
+        skScene.addChild(backgroundNode)
+        
+        
         let leverImage = UIImage(named: "lever")
         let leverTexture = SKTexture(image: leverImage!)
         leverNode = SKSpriteNode(texture: leverTexture, size: CGSize(width: skScene.frame.width * 0.7, height: 10))
         leverNode.anchorPoint = CGPoint(x: 0.5, y: 0.5)
         leverNode.position = CGPoint(x: skScene.frame.width / 2, y: skScene.frame.height / 2)
-        skScene.addChild(leverNode)
+        backgroundNode.addChild(leverNode)
         
         let weightImage = UIImage(named: "weight")
         let weightTexture = SKTexture(image: weightImage!)
         weight0Node = SKSpriteNode(texture: weightTexture, size: CGSize(width: skScene.size.width * 0.1, height: skScene.size.height * 0.1))
         weight0Node.anchorPoint = CGPoint(x: 0.5, y: 0.92)
         //        weight0Node.position = CGPoint(x: skScene.frame.width / 4, y: skScene.frame.height / 2)
-        skScene.addChild(weight0Node)
+        backgroundNode.addChild(weight0Node)
         
         
         weight1Node = SKSpriteNode(texture: weightTexture, size: CGSize(width: skScene.size.width * 0.1, height: skScene.size.height * 0.1))
         weight1Node.anchorPoint = CGPoint(x: 0.5, y: 0.92)
         //        weight1Node.position = CGPoint(x: 3 * skScene.frame.width / 4, y: skScene.frame.height / 2)
-        skScene.addChild(weight1Node)
+        backgroundNode.addChild(weight1Node)
         weight1Node.addChild(massRightLabel)
         weight0Node.addChild(massLeftLabel)
         
@@ -181,16 +186,12 @@ public class LeverPageViewController: UIViewController, PlaygroundLiveViewMessag
             let intermediateResult = leftPosition * Float(leverNode.size.width) / 11
             return Float(leverNode.position.x) - intermediateResult
             
-//            let intermediateResult = 0.5 - leftPosition * 0.066
-//            return Float(skScene.frame.width) * intermediateResult
         }()
         weight0Node.position = CGPoint(x: CGFloat(xPositionL), y: leverNode.position.y)
         let xPositionR: Float = {
             let intermediateResult = rightPosition * Float(leverNode.size.width) / 11
             return Float(leverNode.position.x) + intermediateResult
             
-//            let intermediateResult = 0.5 + rightPosition * 0.066
-//            return Float(skScene.frame.width) * intermediateResult
         }()
         weight1Node.position = CGPoint(x: CGFloat(xPositionR), y: leverNode.position.y)
         
