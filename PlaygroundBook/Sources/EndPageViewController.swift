@@ -13,41 +13,27 @@ import PlaygroundSupport
 public class EndPageViewController: UIViewController, PlaygroundLiveViewMessageHandler, PlaygroundLiveViewSafeAreaContainer {
     
     var endImageView: UIImageView!
-    var stackView: UIStackView!
     
     override public func viewDidLoad() {
         super.viewDidLoad()
         
         endImageView = UIImageView(image: UIImage(named: "end"))
-        stackView = UIStackView()
-        
-        stackView.distribution = .fillEqually
-        stackView.spacing = 10
-        stackView.alignment = .center
-        
-        stackView.contentMode = .center
         endImageView.contentMode = .scaleAspectFit
         
-        view.addSubview(stackView)
+        view.addSubview(endImageView)
         
     }
     
     public override func viewDidLayoutSubviews() {
         
-        stackView.frame = CGRect(x: CGFloat(10.0), y: CGFloat(10.0), width: self.view.frame.width - CGFloat(20.0), height: self.view.frame.height - CGFloat(20.0))
+        endImageView.frame = CGRect(x: CGFloat(10.0), y: CGFloat(10.0), width: self.view.frame.width - CGFloat(20.0), height: self.view.frame.height - CGFloat(20.0))
         
-        if self.view.frame.width < self.view.frame.height {
-            stackView.axis = .vertical
-        } else {
-            stackView.axis = .horizontal
-        }
         
         let layer = CAGradientLayer()
         layer.frame = view.frame
         layer.colors = [ UIColor(red:0.96, green:0.60, blue:0.60, alpha:1.0).cgColor, UIColor.white.cgColor, UIColor(red:0.96, green:0.60, blue:0.60, alpha:1.0).cgColor]
         layer.colors = [ UIColor.white.cgColor, UIColor(red:0.96, green:0.60, blue:0.60, alpha:1.0).cgColor, UIColor.white.cgColor]
         view.layer.insertSublayer(layer, at: 0)
-        stackView.addArrangedSubview(endImageView)
     }
     
 }
